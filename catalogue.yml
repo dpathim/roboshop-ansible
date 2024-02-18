@@ -8,7 +8,7 @@
   hosts: all
   become: yes
   vars:
-   component:"{{ catalogue }}"
+   component: "{{catalogue}}"
   tasks:
    - name: NodeJS setup
      ansible.builtin.import_tasks: nodejs.yml

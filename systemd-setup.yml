@@ -9,14 +9,14 @@
 #func_exit_status
 
 
--  name: Copy {{ component }} Service file
+-  name: Copy {{component}} Service file
    ansible.builtin.copy:
-     src: {{ component }}.service
+     src: "{{component}}.service"
      dest: /etc/systemd/system/{{component}}.service
 
--  name: Start {{ component }} Service
+-  name: Start {{component}} Service
    ansible.builtin.systemd:
-     name: {{ component }}
+     name: "{{component}}"
      state: restarted
      enabled: yes
      daemon_reload: true
