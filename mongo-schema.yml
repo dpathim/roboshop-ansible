@@ -1,0 +1,27 @@
+#if [ "${schema_type}" == "mongodb" ]; then
+#echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>>>>>>Install Mongodb Client<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+#dnf install mongodb-org-shell -y &>>${log}
+#func_exit_status
+#
+#echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>>>>>>Load ${component} Schema<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+#mongo --host mongodb.vdevops562.online </app/schema/${component}.js &>>${log}
+#func_exit_status
+#fi
+
+
+- name: Copy MongoDB Repo file
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Install Mongodb Client
+  ansible.builtin.yum:
+    name: mongodb-org-shell
+    state: installed
+
+- name: Load Schema
+  ansible.builtin.shell: mongo --host mongodb-dev.vdevops562.online </app/schema/{{component}}.js
+
+
+
+

@@ -1,0 +1,59 @@
+
+
+- name: Install NodeJS
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: App pre-requisites
+  ansible.builtin.import_tasks: app-preq.yml
+
+- name: Download NodeJS Dependencies
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app
+
+- name: Mongodb Schema Setup
+  ansible.builtin.import_tasks: mongo-schema.yml
+
+- name: Start Service
+  ansible.builtin.import_tasks: systemd-setup.yml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>>>>>>Create Mongodb Repo<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+#cp mongo.repo /etc/yum.repos.d/mongo.repo &>>${log}
+#func_exit_status
+#echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>>>>>>Install nodejs <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+#dnf module disable nodejs -y  &>>${log}
+#dnf module enable nodejs:18 -y  &>>${log}
+#dnf install nodejs -y  &>>${log}
+#func_exit_status
+#
+#func_apppreq
+#
+#echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>>>>>>Download Nodejs Dependencies<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+#npm install &>>${log}
+#func_exit_status
+#
+#func_schema_setup
+#
+#func_systemd
