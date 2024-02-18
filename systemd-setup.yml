@@ -19,4 +19,4 @@
      name: "{{component}}"
      state: restarted
      enabled: yes
-     daemon_reload: true
+     daemon_reload: yes
