@@ -1,3 +1,8 @@
+- name: Disable nodejs
+  ansible.builtin.shell: yum disable nodejs
+
+- name: enable nodejs:18
+  ansible.builtin.shell: yum enable nodejs:18
 
 - name: Install NodeJS
   ansible.builtin.yum:
