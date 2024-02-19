@@ -14,6 +14,8 @@
 
 - name: Get golang Dependencies
   ansible.builtin.shell: go get
+  args:
+    chdir: /app
 
 - name: Build golang Dependencies
   ansible.builtin.shell: go build
