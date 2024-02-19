@@ -19,6 +19,8 @@
 
 - name: Build golang Dependencies
   ansible.builtin.shell: go build
+  args:
+    chdir: /app
 
 - name: Systemd Setup
   ansible.builtin.import_tasks: systemd-setup.yml
