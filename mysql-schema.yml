@@ -1,0 +1,22 @@
+
+#  if [ "${schema_type}" == "mysql" ]; then
+#    echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>>>>>>Install mysql Client<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+#    dnf install mysql -y &>>${log}
+#    func_exit_status
+#
+#    echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>>>>>>Load Schema<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+#    mysql -h mysql.vdevops562.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
+#    func_exit_status
+#    fi
+
+- name: Install mysql Client
+  ansible.builtin.yum:
+    name: mysql
+    state: installed
+
+- name: Load Schema
+  ansible.builtin.shell: mysql -h mysql-dev.vdevops562.online -uroot -pRoboShop@1 < /app/schema/{{component}}.sql
+
+
+
+
