@@ -6,3 +6,4 @@
   tasks:
     - name: Golang setup
       ansible.builtin.import_tasks: golang.yml
+
