@@ -8,8 +8,6 @@
 
 - name: Download golang Dependencies
   ansible.builtin.shell: go mod init dispatch
-#  args:
-#    chdir: /app
 
 - name: Get golang Dependencies
   ansible.builtin.shell: go get
