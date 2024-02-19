@@ -1,5 +1,5 @@
 - name: Setup Mysql
-  host: all
+  hosts: all
   become: true
   tasks:
     - name: create Mysql repo
